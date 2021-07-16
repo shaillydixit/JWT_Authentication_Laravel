@@ -19,10 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('resgister', [UserController::class, 'register']);
+Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
 
-Route::group(['middleware' => ['api']], function () {
+Route::group(['middleware' => ['auth:api']], function () {
     Route::get('profile', [UserController::class, 'profile']);
     Route::get('logout', [UserController::class, 'logout']);
 
