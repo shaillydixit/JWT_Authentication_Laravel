@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
+use App\Models\Course;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -51,5 +52,11 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    //for one to many relationship
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
     }
 }
